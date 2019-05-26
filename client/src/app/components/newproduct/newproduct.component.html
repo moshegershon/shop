@@ -1,0 +1,11 @@
+<form>
+    <div>
+      <label>
+        <input type="text" [(ngModel)]="product.name" name="name" class="form-control" > 
+      </label>
+      <label>
+          <input type="text" [(ngModel)]="product.category" name="category" class="form-control" > 
+        </label>
+        <button (click)= "newp()" class="btn btn-primary">Add</button>
+      </div>
+    </form>

@@ -26,4 +26,7 @@ export class ProductService {
       return this.httpClient.get<Product[]>(environment.serverUri + ENDPOINT);
     }
   }
+  newp(p: Product) {
+    return this.httpClient.post<Product>(environment.serverUri + '/nproduct', p);
+  }
 }

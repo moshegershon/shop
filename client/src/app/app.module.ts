@@ -8,6 +8,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { CartComponent } from './components/cart/cart.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { NewproductComponent } from './components/newproduct/newproduct.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { HomeComponent } from './components/home/home.component';
     ProductListComponent,
     CartComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    NewproductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

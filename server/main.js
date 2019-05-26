@@ -53,10 +53,11 @@ temp
 
 
 app.post('/nproduct' , function(req,res) {
+    debugger;
+    console.log(111);
     var newProduct = new Product();
-    newProduct.category = 'table tennis';
-    newProduct.name = 'butterfly rubber'
-
+    newProduct.category = req.body.category;
+    newProduct.name = req.body.name;
     newProduct.save(function(err,Product) {
         if (err) {
             console.log(err);
