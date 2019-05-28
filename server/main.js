@@ -19,7 +19,6 @@ con.once('open', function () {
 
 /* end conection */
 
-
 /* config  */
 const app = express();
 app.use(cors());
@@ -33,7 +32,7 @@ app.get('/product/:id', productCtrl.getSingleProduct);
 // app.get('/product', productCtrl.getAllProducts);
 
 
-app.get('/product',  productCtrl.getAllProducts, function (req, res) {
+app.get('/product', productCtrl.getAllProducts, function (req, res) {
     console.log('getting all products');
     Product.find({})
         .exec(function (err, products) {
@@ -46,29 +45,32 @@ app.get('/product',  productCtrl.getAllProducts, function (req, res) {
         });
 });
 /* end controllers */
-
 /*
 temp
 */
 
 
-app.post('/nproduct' , function(req,res) {
-    debugger;
-    console.log(111);
-    var newProduct = new Product();
+app.post('/nproduct', function (req, res) {
+    var newProduct = new Product;
     newProduct.category = req.body.category;
     newProduct.name = req.body.name;
-    newProduct.save(function(err,Product) {
+    newProduct.save(function (err, Product) {
         if (err) {
             console.log(err);
             res.send('Error saving product!')
         } else {
-            console.log(Product);
             res.json(Product);
+            console.log(Product);
         }
     })
 });
 
+app.get('/temp', function (req, res) {
+    debugger;
+    console.log('hello')
+    res.send('hello')
+});
+
 app.listen(PORT, () => {
-    console.log('Listening on ',PORT);
+    console.log('Listening on ', PORT);
 });
