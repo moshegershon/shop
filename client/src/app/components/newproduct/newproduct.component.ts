@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
+import { ProductService } from '../../services/product.service';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -8,23 +8,24 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./newproduct.component.css']
 })
 export class NewproductComponent implements OnInit {
-  
+
   product: Product;
 
-  constructor(private productService:ProductService) { 
+  constructor(private productService: ProductService) {
     this.product = {
       name: '',
-      category:'',
-      id:null
+      category: '',
+      price:'',
+      id: ''
     };
   }
 
   ngOnInit() {
   }
-  newp(){
+  newp() {
     this.productService.newp(this.product)
   }
-  temp(){
+  temp() {
     this.productService.temp();
   }
 

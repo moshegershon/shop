@@ -11,11 +11,12 @@ var db = 'mongodb://127.0.0.1/product';
 mongoose.connect(db, { useMongoClient: true });
 var con = mongoose.connection;
 
+
 con.on('error', console.error.bind(console, 'connection error:'));
 
-con.once('open', function () {
-    console.log("connection created");
-});
+console.log("connection created");
+    con.once('open', function () {
+}); 
 
 /* end conection */
 
@@ -28,11 +29,11 @@ const PORT = 6789;
 
 
 /* controllers */
-app.get('/product/:id', productCtrl.getSingleProduct);
+// app.get('/product/:id', productCtrl.getSingleProduct);
 // app.get('/product', productCtrl.getAllProducts);
 
 
-app.get('/product', productCtrl.getAllProducts, function (req, res) {
+app.get('/product', function (req, res) {
     console.log('getting all products');
     Product.find({})
         .exec(function (err, products) {
@@ -64,12 +65,17 @@ app.post('/nproduct', function (req, res) {
         }
     })
 });
+// app.get('/nproduct' , (req,res)=>{
+//     product.find({}, (results) => {
+//         res.json(product);
+//     })
+// })
 
-app.get('/temp', function (req, res) {
-    debugger;
-    console.log('hello')
-    res.send('hello')
-});
+
+// app.get('/temp', function (req, res) {
+//     console.log('hello')
+//     res.send('hello')
+// });
 
 app.listen(PORT, () => {
     console.log('Listening on ', PORT);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable, from } from 'rxjs';
+import { Observable, from, observable} from 'rxjs';
 import { catchError } from 'rxjs/operators'
 import { Product } from '../models/product';
 
@@ -13,8 +13,9 @@ const ENDPOINT = 'product';
 
 export class ProductService {
 
+  private product: Product;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(public httpClient: HttpClient) {
   }
 
   get(id?: string): Observable<Product[] | Product> {
@@ -29,13 +30,20 @@ export class ProductService {
       return this.httpClient.get<Product[]>(environment.serverUri + ENDPOINT);
     }
   }
+  getall(): Observable<Product>{
+    return this.httpClient.get<Product>('http://localhost:6789/product')
+  }
 
   newp(p: Product) {
-    return this.httpClient.post<Product>('http://localhost:6789/nproduct', p);
+    return this.httpClient.post<Product>('http://localhost:6789/nproduct', p).subscribe(res=>{
+      debugger;
+    });
   }
 
   temp(){
-    return this.httpClient.get('http://localhost:6789/temp');
+    return this.httpClient.get('http://localhost:6789/temp').subscribe(res => {
+      debugger;
+    });
   }
 
 
