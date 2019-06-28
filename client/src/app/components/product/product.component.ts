@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { Cart } from 'src/app/models/cart';
 
 @Component({
   selector: 'app-product',
@@ -9,20 +10,27 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  @Input() 
+  @Input()
   product: Product;
+  cart:Cart
 
-  constructor(private cartService: CartService , private productService: ProductService)  { }
+  constructor(private cartService: CartService, private productService: ProductService) {
+    this.cart={
+      products:[]
+    }
+   }
 
   ngOnInit() {
     this.productService.getall().subscribe(res => {
       console.log(res);
-      this.product = res; 
+      this.product = res;
     })
   }
 
-  addtocart(){
-    this.cartService.addtocart(this.product)
+  addtocart(product) {
+    console.log(product);
+    this.cartService.addtocart(product).subscribe(res => {
+      console.log(res);
+    })
   }
-  
 }

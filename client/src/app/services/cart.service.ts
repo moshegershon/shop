@@ -8,23 +8,33 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CartService {
-  
+
   private _cart: Cart;
-  cart: BehaviorSubject<Cart>;
+  // cart: BehaviorSubject<Cart>;
 
   constructor(private httpClient: HttpClient) {
     this._cart = {
       products: []
     };
-
-    this.cart = new BehaviorSubject<Cart>(this._cart);
+    // this.cart = new BehaviorSubject<Cart>(this._cart);
   }
 
-  addtocart(p:Product) {
-    return this.httpClient.post<any>('http://localhost:6789/nproduct',p)
+  addtocart(product: Product):Observable<Cart> {
+    this._cart.products.push(product);
+    // this.cart.next(this._cart);
+    localStorage.setItem('itemsincart',JSON.stringify(this._cart));
+    return JSON.parse(localStorage.getItem('itemsincart'));
   }
 
-  itemsInCart(): Observable<Cart> {
-    return this.cart;
+  itemsInCart() {
+    this._cart = JSON.parse(localStorage.getItem('itemsincart'));
+    return this._cart;
+  }
+  delete(product):Observable<Cart>{   
+    console.log(this._cart.products);
+    this._cart.products = this._cart.products.filter( item => item._id != product._id);
+    console.log(this._cart.products);
+    localStorage.setItem('itemsincart',JSON.stringify(this._cart));
+    return JSON.parse(localStorage.getItem('itemsincart'));
   }
 }

@@ -13,6 +13,7 @@ export class NewproductComponent implements OnInit {
 
   constructor(private productService: ProductService) {
     this.product = {
+      _id: '',
       name: '',
       category: '',
       price:'',
@@ -25,6 +26,7 @@ export class NewproductComponent implements OnInit {
   newp() {
     this.productService.newp(this.product)
   }
+  
   temp() {
     this.productService.temp();
   }

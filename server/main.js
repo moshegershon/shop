@@ -8,15 +8,15 @@ const Product = require('./models/product.model')
 /* conection */
 
 var db = 'mongodb://127.0.0.1/product';
-mongoose.connect(db, { useMongoClient: true });
+mongoose.connect(db, { useNewUrlParser: true });
 var con = mongoose.connection;
 
 
 con.on('error', console.error.bind(console, 'connection error:'));
 
 console.log("connection created");
-    con.once('open', function () {
-}); 
+con.once('open', function () {
+});
 
 /* end conection */
 
@@ -55,6 +55,7 @@ app.post('/nproduct', function (req, res) {
     var newProduct = new Product;
     newProduct.category = req.body.category;
     newProduct.name = req.body.name;
+    newProduct.price = req.body.price;
     newProduct.save(function (err, Product) {
         if (err) {
             console.log(err);
@@ -65,17 +66,10 @@ app.post('/nproduct', function (req, res) {
         }
     })
 });
-// app.get('/nproduct' , (req,res)=>{
-//     product.find({}, (results) => {
-//         res.json(product);
-//     })
-// })
-
-
-// app.get('/temp', function (req, res) {
-//     console.log('hello')
-//     res.send('hello')
-// });
+app.get('/product/:id', function getSingleProduct(req, res) {
+    const id = req.params.id;
+    console.log(id);
+});
 
 app.listen(PORT, () => {
     console.log('Listening on ', PORT);
