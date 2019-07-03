@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
   }
   checkout(){
     this.cartService.checkout();
-    alert('your cart will be shipped to your home thank you for buying');
+    alert('Your order has been successfully placed');
   }
   showcart(){
   this.cart = this.cartService.itemsInCart();
