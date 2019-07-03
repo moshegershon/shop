@@ -14,8 +14,7 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) {
   }
   ngOnInit() {
-    this.cart = this.cartService.itemsInCart();
-    console.log(this.cart)
+    this.showcart();
   }
 
   delete(product){
@@ -24,5 +23,13 @@ export class CartComponent implements OnInit {
       console.log(res);
       this.cart = res;
     });
+  }
+  checkout(){
+    this.cartService.checkout();
+    alert('your cart will be shipped to your home thank you for buying');
+  }
+  showcart(){
+  this.cart = this.cartService.itemsInCart();
+  console.log(this.cart);
   }
 } 

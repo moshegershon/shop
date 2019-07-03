@@ -31,6 +31,7 @@ export class ProductComponent implements OnInit {
     console.log(product);
     this.cartService.addtocart(product).subscribe(res => {
       console.log(res);
+      alert('the product '+ this.product.name+ ' was saved in the cart');
     })
   }
 
@@ -40,7 +41,7 @@ export class ProductComponent implements OnInit {
       console.log(product);
       this.getAllProducts();
     }, ()=>{
-      console.log('errr')
+      console.log('errr');
     });
   };
 

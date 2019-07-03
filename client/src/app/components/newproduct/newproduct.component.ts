@@ -25,6 +25,7 @@ export class NewproductComponent implements OnInit {
   }
   newp() {
     this.productService.newp(this.product)
+    alert('the product: '+ this.product.name + ' was saved');
   }
 
 }

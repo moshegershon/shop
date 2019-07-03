@@ -30,6 +30,10 @@ export class CartService {
     this._cart = JSON.parse(localStorage.getItem('itemsincart'));
     return this._cart;
   }
+  checkout(){
+    localStorage.clear();
+  }
+
   delete(product):Observable<Cart>{   
     console.log(this._cart.products);
     this._cart.products = this._cart.products.filter( item => item._id != product._id);
