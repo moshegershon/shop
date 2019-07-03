@@ -4,10 +4,10 @@
                         <!-- {{ cart | json }} -->
                         <div *ngFor='let product of cart.products'>
                                         <button (click)='delete(product)' class="btn btn-primary">x</button>
-                                        <div>the product's id is: {{product._id}}</div>
-                                        <div>the product's name is: {{product .name}}</div>
-                                        <div>the product's category is: {{product.category}}</div>
-                                        <div>the price is: {{product.price}}</div>
+                                        <!-- <div>the product's id is: {{product._id}}</div> -->
+                                        <div>the product's Name is: {{product .name}}</div>
+                                        <div>the product's Category is: {{product.category}}</div>
+                                        <div>the price is: {{product.price}}$</div>
                                         <hr>
                         </div>
                 </div>

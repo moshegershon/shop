@@ -1,10 +1,11 @@
 <div>
 </div>
-<div *ngFor='let a of product'>
+<div *ngFor='let product of product'>
     <hr>
-    <h4>the product's name is: {{a.name}}</h4>
-    <h5>the product's category is: {{a.category}}</h5>
-    <h6>the price is: {{a.price}}</h6>
-    <button class="btn btn-primary" (click)="addtocart(a)">add to cart</button>
+    <h4>the product's name is: {{product.name}}</h4>
+    <h5>the product's category is: {{product.category}}</h5>
+    <h6>the price is: {{product.price}}</h6>
+    <button class="btn btn-secondary" (click)="deletep(product)">x</button>
+    <button class="btn btn-primary" (click)="addtocart(product)">add to cart</button>
 </div>
     

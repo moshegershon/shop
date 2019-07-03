@@ -1,3 +1,13 @@
-<p>
-  home works!
-</p>
+<form>
+    <div>
+      <label>
+        Name:
+        <input type="text" [(ngModel)]="user.name" name="name" class="form-control" >
+      </label>
+      <label>
+        password:
+        <input type="text" [(ngModel)]="user.password" name="password" class="form-control">
+      </label>
+      <button (click)="newu()" class="btn btn-primary">Sing up</button>
+    </div>
+  </form>

@@ -26,9 +26,5 @@ export class NewproductComponent implements OnInit {
   newp() {
     this.productService.newp(this.product)
   }
-  
-  temp() {
-    this.productService.temp();
-  }
 
 }

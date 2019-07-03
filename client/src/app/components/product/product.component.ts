@@ -33,4 +33,21 @@ export class ProductComponent implements OnInit {
       console.log(res);
     })
   }
-}
+
+  deletep(product){
+    this.productService.deletep(product).subscribe(res => {
+      console.log(res);
+      console.log(product);
+      this.getAllProducts();
+    }, ()=>{
+      console.log('errr')
+    });
+  };
+
+  getAllProducts() {
+    this.productService.getall().subscribe(res => {
+      console.log(res);
+      this.product = res;
+    })
+  }
+};

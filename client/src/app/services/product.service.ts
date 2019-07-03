@@ -36,14 +36,11 @@ export class ProductService {
 
   newp(p: Product) {
     return this.httpClient.post<Product>('http://localhost:6789/nproduct', p).subscribe(res=>{
-      debugger;
     });
   }
 
-  temp(){
-    return this.httpClient.get('http://localhost:6789/temp').subscribe(res => {
-      debugger;
-    });
+  deletep(p):Observable<any>{
+    return this.httpClient.delete('http://localhost:6789/product/' + p._id);
   }
 
 
