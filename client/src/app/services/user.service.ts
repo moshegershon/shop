@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { User } from '../models/user';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User} from '../models/user';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private user: User;
-  constructor(private httpClient:HttpClient) { }
+  private baseApi: String = 'http://localhost:6789/api/';
 
-  newu(u :User){
-    return this.httpClient.post<User>('http://localhost:6789/nuser',u).subscribe(res=>{
-    });
+  constructor(private httpClient: HttpClient) {
   }
-  getallusers():Observable<User>{
-   return this.httpClient.get<User>('http://localhost:6789/allusers')
+
+  newu(u: User) {
+    return this.httpClient.post<User>('http://localhost:6789/nuser', u).subscribe(res => {
+    });
   }
 }

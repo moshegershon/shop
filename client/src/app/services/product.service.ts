@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { Observable, from, observable} from 'rxjs';
-import { catchError } from 'rxjs/operators'
-import { Product } from '../models/product';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
+import {environment} from 'src/environments/environment';
+import {Observable, from, observable} from 'rxjs';
+import {catchError} from 'rxjs/operators'
+import {Product} from '../models/product';
 
 const ENDPOINT = 'product';
 
@@ -14,6 +14,7 @@ const ENDPOINT = 'product';
 export class ProductService {
 
   private product: Product;
+  private baseApi: String = 'http://localhost:6789/api/';
 
   constructor(public httpClient: HttpClient) {
   }
@@ -30,17 +31,18 @@ export class ProductService {
       return this.httpClient.get<Product[]>(environment.serverUri + ENDPOINT);
     }
   }
-  getall(): Observable<Product>{
-    return this.httpClient.get<Product>('http://localhost:6789/product')
+
+  getall(): Observable<Product> {
+    return this.httpClient.get<Product>(this.baseApi + 'product');
   }
 
   newp(p: Product) {
-    return this.httpClient.post<Product>('http://localhost:6789/nproduct', p).subscribe(res=>{
+    return this.httpClient.post<Product>(this.baseApi + 'nproduct', p).subscribe(res => {
     });
   }
 
-  deletep(p):Observable<any>{
-    return this.httpClient.delete('http://localhost:6789/product/' + p._id);
+  deletep(p): Observable<any> {
+    return this.httpClient.delete(this.baseApi + 'product/' + p._id);
   }
 
 
