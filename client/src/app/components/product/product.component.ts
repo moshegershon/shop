@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Product } from 'src/app/models/product';
-import { CartService } from 'src/app/services/cart.service';
-import { ProductService } from 'src/app/services/product.service';
-import { Cart } from 'src/app/models/cart';
+import {Component, OnInit, Input} from '@angular/core';
+import {Product} from 'src/app/models/product';
+import {CartService} from 'src/app/services/cart.service';
+import {ProductService} from 'src/app/services/product.service';
+import {Cart} from 'src/app/models/cart';
 
 @Component({
   selector: 'app-product',
@@ -11,44 +11,40 @@ import { Cart } from 'src/app/models/cart';
 })
 export class ProductComponent implements OnInit {
   @Input()
-  product: Product;
-  cart:Cart
+  products: Product[];
 
-  constructor(private cartService: CartService, private productService: ProductService) {
-    this.cart={
-      products:[]
-    }
-   }
+  constructor(
+    private cartService: CartService,
+    private productService: ProductService,
+  ) {
+  }
 
   ngOnInit() {
-    this.productService.getall().subscribe(res => {
-      console.log(res);
-      this.product = res;
-    })
+    this.getAllProducts();
   }
 
-  addtocart(product) {
+  addToCart(product) {
     console.log(product);
-    this.cartService.addtocart(product).subscribe(res => {
+    this.cartService.addToCart(product).subscribe((res: Cart) => {
       console.log(res);
-      alert('the product '+ this.product.name+ ' was saved in the cart');
-    })
+      alert('the product ' + product.name + ' was saved in the cart');
+    });
   }
 
-  deletep(product){
+  deletep(product) {
     this.productService.deletep(product).subscribe(res => {
       console.log(res);
       console.log(product);
       this.getAllProducts();
-    }, ()=>{
+    }, () => {
       console.log('errr');
     });
-  };
+  }
 
   getAllProducts() {
-    this.productService.getall().subscribe(res => {
+    this.productService.getall().subscribe((res: any) => {
       console.log(res);
-      this.product = res;
-    })
+      this.products = res;
+    });
   }
-};
+}
