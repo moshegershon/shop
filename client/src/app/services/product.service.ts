@@ -33,16 +33,16 @@ export class ProductService {
   }
 
   getall(): Observable<Product> {
-    return this.httpClient.get<Product>(this.baseApi + 'product');
+    return this.httpClient.get<Product>('http://localhost:6789/api/product');
   }
 
   newp(p: Product) {
-    return this.httpClient.post<Product>(this.baseApi + 'nproduct', p).subscribe(res => {
+    return this.httpClient.post<Product>('http://localhost:6789/api/nproduct', p).subscribe(res => {
     });
   }
 
   deletep(p): Observable<any> {
-    return this.httpClient.delete(this.baseApi + 'product/' + p._id);
+    return this.httpClient.delete('http://localhost:6789/api/product/' + p._id);
   }
 
 

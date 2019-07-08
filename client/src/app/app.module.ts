@@ -10,6 +10,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewproductComponent } from './components/newproduct/newproduct.component';
 import { FormsModule } from '@angular/forms';
+import { ComponentsComponent } from './login/components/components.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     HeaderComponent,
     HomeComponent,
-    NewproductComponent
+    NewproductComponent,
+    ComponentsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

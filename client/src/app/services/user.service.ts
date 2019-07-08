@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class UserService {
 
-  private user: User;
+   user: User;
   private baseApi: String = 'http://localhost:6789/api/';
 
   constructor(private httpClient: HttpClient) {
@@ -18,5 +18,11 @@ export class UserService {
   newu(u: User) {
     return this.httpClient.post<User>('http://localhost:6789/nuser', u).subscribe(res => {
     });
+    
+  }
+  singin(user){
+  return this.httpClient.post<User>('http://localhost:6789/login', user).subscribe(res =>{
+    
+  })  
   }
 }

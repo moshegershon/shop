@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const productCtrl = require('./endpoints/product');
+mongoose.set('useCreateIndex', true);
 const Product = require('./models/product.model')
 const User = require('./models/user.model')
 const {auth} = require('./controllers/authController');
@@ -40,7 +40,7 @@ app.all('/api*', (req, res, next) => {
         next();
         // decoded undefined
     });
-})
+});
 
 
 /* controllers */

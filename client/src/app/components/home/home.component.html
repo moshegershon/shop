@@ -2,11 +2,15 @@
     <div>
       <label>
         Name:
-        <input type="text" [(ngModel)]="user.name" name="name" class="form-control" >
+        <input type="text" [(ngModel)]="user.name" name="Name" class="form-control" >
       </label>
       <label>
         password:
-        <input type="text" [(ngModel)]="user.password" name="password" class="form-control">
+        <input type="text" [(ngModel)]="user.password" name="Password" class="form-control">
+      </label>
+      <label>
+        Email
+        <input type="text" [(ngModel)]="user.email" name="email" class="form-control">
       </label>
       <button (click)="newu()" class="btn btn-primary">Sing up</button>
     </div>

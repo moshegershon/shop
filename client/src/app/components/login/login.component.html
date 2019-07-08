@@ -1,0 +1,17 @@
+<form>
+  <div>
+    <label>
+      Email:
+      <input type="text" [(ngModel)]="user.email" name="email" class="form-control" >
+    </label>
+    <label>
+      Name
+      <input type="text" [(ngModel)]="user.name" name="name" class="form-control" >
+    </label>
+    <label>
+      Password
+      <input type="text" [(ngModel)]="user.password" name="password" class="form-control" >
+    </label>
+    <button (click)="singin(user)" class="btn btn-primary">Sing in</button>
+  </div>
+</form>

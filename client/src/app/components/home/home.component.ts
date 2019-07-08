@@ -15,12 +15,13 @@ export class HomeComponent implements OnInit {
     _id: '',
     name: '',
     password: '',
+    email:''
   };
   };
   ngOnInit(){
-    this.userService.getallusers().subscribe(res=>{
-      console.log(res);
-    });
+    // this.userService.getallusers().subscribe(res=>{
+    //   console.log(res);
+    // });
   };
   newu() {
     this.userService.newu(this.user)
