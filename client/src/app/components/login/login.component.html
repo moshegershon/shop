@@ -1,3 +1,6 @@
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
 <form>
   <div>
     <label>
@@ -12,7 +15,9 @@
       Password
       <input type="text" [(ngModel)]="user.password" name="password" class="form-control" >
     </label>
-    <button (click)="singin(user)" class="btn btn-primary">Sing in</button>
   </div>
+  <button (click)="singin(user)" class="btn btn-primary">Sing in</button>
 </form>
 <a class="nav-link" [routerLink]="['/register']">register</a>
+  </div>
+</div>

@@ -18,11 +18,18 @@ export class CartComponent implements OnInit {
   }
 
   delete(product){
-    // localStorage.removeItem(JSON.stringify(product));
+    if (confirm('are you sure you want remove this item from the cart')){
+      // localStorage.removeItem(JSON.stringify(product));
     this.cartService.delete(product).subscribe(res => {
       console.log(res);
       this.cart = res;
     });
+    }
+    else{
+      
+    }
+
+    
   }
   checkout(){
     this.cartService.checkout();

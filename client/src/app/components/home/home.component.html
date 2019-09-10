@@ -1,3 +1,6 @@
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
 <form>
   <div>
     <label>
@@ -12,7 +15,9 @@
       Email
       <input type="text" [(ngModel)]="user.email" name="email" class="form-control">
     </label>
-    <button (click)="newu()" class="btn btn-primary">Sing up</button>
   </div>
+  <button (click)="newu()" class="btn btn-primary">Sing up</button>
 </form>
 <a class="nav-link" [routerLink]="['/login']">back to login</a>
+    </div>
+  </div>

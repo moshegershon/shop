@@ -32,6 +32,7 @@ export class ProductComponent implements OnInit {
   }
 
   deletep(product) {
+    if (confirm('are you sure you want to remove this product from your list')){
     this.productService.deletep(product).subscribe(res => {
       console.log(res);
       console.log(product);
@@ -39,6 +40,9 @@ export class ProductComponent implements OnInit {
     }, () => {
       console.log('errr');
     });
+  }else{
+
+  }
   }
 
   getAllProducts() {
