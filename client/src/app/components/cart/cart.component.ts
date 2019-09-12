@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
   }
 
   delete(product){
-    if (confirm('are you sure you want remove this item from the cart')){
+    if (confirm('are you sure you want remove ' +product.name +' from the cart')){
       // localStorage.removeItem(JSON.stringify(product));
     this.cartService.delete(product).subscribe(res => {
       console.log(res);
@@ -28,12 +28,13 @@ export class CartComponent implements OnInit {
     else{
       
     }
-
-    
   }
   checkout(){
+    if(confirm('Are your sure you want to proceed to checkout?')){
     this.cartService.checkout();
-    alert('Your order has been successfully placed');
+  }
+  else{
+  }
   }
   showcart(){
   this.cart = this.cartService.itemsInCart();

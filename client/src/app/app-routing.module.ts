@@ -8,10 +8,10 @@ import {LoginComponent} from './components/login/login.component';
 import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: ProductComponent, pathMatch: 'full', canActivate: [AuthGuard]},
-  {path: 'product', component: ProductComponent, canActivate: [AuthGuard]},
-  {path: 'product/:id', component: ProductComponent, canActivate: [AuthGuard]},
-  {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
+  {path: '', component: ProductComponent, pathMatch: 'full'},
+  {path: 'product', component: ProductComponent},
+  {path: 'product/:id', component: ProductComponent, },
+  {path: 'cart', component: CartComponent,},
   {path: 'nproduct', component: NewproductComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: HomeComponent}

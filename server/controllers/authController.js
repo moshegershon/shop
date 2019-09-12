@@ -13,6 +13,5 @@ AuthController.compare = function (password, hash, callback) {
         return callback(err, res);
     });
 }
-
 module.exports.auth = AuthController;
 

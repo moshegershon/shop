@@ -5,18 +5,18 @@
   <div>
     <label>
       Email:
-      <input type="text" [(ngModel)]="user.email" name="email" class="form-control" >
+      <input type="text" [(ngModel)]="user.email" name="email" class="form-control" required>
     </label>
     <label>
       Name
-      <input type="text" [(ngModel)]="user.name" name="name" class="form-control" >
+      <input type="text" [(ngModel)]="user.name" name="name" class="form-control" required>
     </label>
     <label>
       Password
-      <input type="text" [(ngModel)]="user.password" name="password" class="form-control" >
+      <input type="password" [(ngModel)]="user.password" name="password" class="form-control" required>
     </label>
   </div>
-  <button (click)="singin(user)" class="btn btn-primary">Sing in</button>
+  <button (click)="singin(user)" class="btn btn-primary" type="submit">Sing in</button>
 </form>
 <a class="nav-link" [routerLink]="['/register']">register</a>
   </div>

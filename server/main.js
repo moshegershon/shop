@@ -29,23 +29,25 @@ app.use(cors());
 app.use(bodyParser());
 const PORT = 6789;
 /* end config */
-app.all('/api*', (req, res, next) => {
-    let tk = req.headers.authorization;
-    jwt.verify(tk, 'privateKey', function (err, decoded) {
-        // err
-        if (err) {
-            return res.send({message: "unauthorized"});
-        }
-        req.params.id = decoded.id;
-        next();
+
+
+
+
+// app.all('/api*', (req, res, next) => {
+//     let tk = req.headers.authorization;
+//     jwt.verify(tk, 'privateKey', function (err, decoded) {
+//         // err
+//         if (err) {
+//             return res.send({message: "unauthorized"});
+//         }
+        // req.params.id = decoded.id;
+        // next();
         // decoded undefined
-    });
-});
+//     });
+// });
 
 
-/* controllers */
-// app.get('/product/:id', productCtrl.getSingleProduct);
-// app.get('/product', productCtrl.getAllProducts);
+
 
 
 app.get('/api/product', function (req, res) {
@@ -84,13 +86,14 @@ app.post('/api/nproduct', function (req, res) {
     newProduct.category = req.body.category;
     newProduct.name = req.body.name;
     newProduct.price = req.body.price;
+    newProduct.pic = req.body.pic;
     newProduct.save(function (err, Product) {
         if (err) {
             console.log(err);
             res.send('Error saving product!')
         } else {
             res.json(Product);
-            console.log(Product);
+            console.log("product:",Product);
         }
     })
 });
@@ -162,4 +165,5 @@ app.get('/api/allusers', function (req, res) {
 
 app.listen(PORT, () => {
     console.log('Listening on ', PORT);
+
 });

@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
-import {environment} from 'src/environments/environment';
-import {Observable, from, observable} from 'rxjs';
-import {catchError} from 'rxjs/operators'
-import {Product} from '../models/product';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable, from, observable } from 'rxjs';
+import { catchError } from 'rxjs/operators'
+import { Product } from '../models/product';
 
 const ENDPOINT = 'product';
 
@@ -44,15 +44,4 @@ export class ProductService {
   deletep(p): Observable<any> {
     return this.httpClient.delete('http://localhost:6789/api/product/' + p._id);
   }
-
-
-  // newp(product: Product): Observable<Product> {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     })
-  //   };
-  //   return this.httpClient.post<Product>('http://localhost:6789/nproduct', product, httpOptions)
-  //     .pipe(catchError(console.log('products', product)));
-  // }
 }
