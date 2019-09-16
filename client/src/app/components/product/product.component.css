@@ -1,0 +1,14 @@
+div{
+    direction: ltr;
+}
+.product{
+    
+    border-radius: 4px;
+    background-color: #EEEEEE;
+    min-width: 200px;
+    width: 30%;
+    margin-bottom: 1%;
+    /* flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center; */
+}

@@ -1,10 +1,19 @@
-<div>
-</div>
-<div *ngFor='let product of products'>
-    <hr>
-    <h4>the product's name is: {{product.name}}</h4>
-    <h5>the product's category is: {{product.category}}</h5>
-    <h6>the price is: {{product.price}}$</h6>
-    <button class="btn btn-secondary" (click)="deletep(product)">x</button>
-    <button class="btn btn-primary" (click)="addToCart(product)">add to cart</button>
+<div class="container">
+  <div class="row">
+    <div *ngFor='let product of products' class="col">
+      <div class="product">
+          <button class="btn btn-secondary" (click)="deletep(product)">x</button>
+          <p>
+            שם: {{product.name}}
+          </p>
+          <p>
+            קטגוריה: {{product.category}}
+          </p>
+          <p>
+            מחיר: {{product.price}}$
+          </p>
+          <button class="btn btn-primary" (click)="addToCart(product)">add to cart</button>
+      </div>
+    </div>
+  </div>
 </div>

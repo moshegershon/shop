@@ -20,4 +20,7 @@ export class HeaderComponent implements OnInit {
   get isLoggedIn(): boolean {
     return !!this.userService.currentUserValue;
   }
+  get NotLoggedIn(): boolean {
+    return !this.userService.currentUserValue;
+  }
 }

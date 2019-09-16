@@ -20,7 +20,7 @@ export class CartService {
     // this.cart = new BehaviorSubject<Cart>(this._cart);
   }
 
-  addToCart(product: Product): Observable<Cart> {
+  addToCart(product: Product): Observable<Cart>{
     this._cart.products.push(product);
     // this.cart.next(this._cart);
     localStorage.setItem('itemsincart', JSON.stringify(this._cart));
@@ -34,8 +34,12 @@ export class CartService {
     return this._cart;
   }
 
+  refresh(): void {
+    window.location.reload();
+}
   checkout() {
     localStorage.clear();
+    this.refresh();
   }
 
   delete(product): Observable<Cart> {

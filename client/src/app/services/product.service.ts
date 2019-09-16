@@ -14,7 +14,7 @@ const ENDPOINT = 'product';
 export class ProductService {
 
   private product: Product;
-  private baseApi: String = 'http://localhost:6789/api/';
+  private baseApi: String = 'http://localhost:6789/';
 
   constructor(public httpClient: HttpClient) {
   }
@@ -33,7 +33,7 @@ export class ProductService {
   }
 
   getall(): Observable<Product> {
-    return this.httpClient.get<Product>('http://localhost:6789/api/product');
+    return this.httpClient.get<Product>('http://localhost:6789/product');
   }
 
   newp(p: Product) {

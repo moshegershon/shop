@@ -33,24 +33,24 @@ const PORT = 6789;
 
 
 
-// app.all('/api*', (req, res, next) => {
-//     let tk = req.headers.authorization;
-//     jwt.verify(tk, 'privateKey', function (err, decoded) {
-//         // err
-//         if (err) {
-//             return res.send({message: "unauthorized"});
-//         }
-        // req.params.id = decoded.id;
-        // next();
+app.all('/api*', (req, res, next) => {
+    let tk = req.headers.authorization;
+    jwt.verify(tk, 'privateKey', function (err, decoded) {
+        // err
+        if (err) {
+            return res.send({message: "unauthorized"});
+        }
+        req.params.id = decoded.id;
+        next();
         // decoded undefined
-//     });
-// });
+    });
+});
 
 
 
 
 
-app.get('/api/product', function (req, res) {
+app.get('/product', function (req, res) {
     console.log('getting all products');
     Product.find({})
         .exec(function (err, products) {
@@ -150,18 +150,18 @@ app.post('/nuser', function (req, res) {
     })
 });
 
-app.get('/api/allusers', function (req, res) {
-    console.log('getting all users');
-    User.find({})
-        .exec(function (err, user) {
-            if (err) {
-                res.send(404, 'Error has occurred!')
-            } else {
-                // console.log(products);
-                res.json(user);
-            }
-        });
-});
+// app.get('/api/allusers', function (req, res) {
+//     console.log('getting all users');
+//     User.find({})
+//         .exec(function (err, user) {
+//             if (err) {
+//                 res.send(404, 'Error has occurred!')
+//             } else {
+//                 // console.log(products);
+//                 res.json(user);
+//             }
+//         });
+// });
 
 app.listen(PORT, () => {
     console.log('Listening on ', PORT);
