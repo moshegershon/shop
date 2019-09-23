@@ -2,7 +2,7 @@
   <div class="row">
     <div *ngFor='let product of products' class="col">
       <div class="product">
-          <button class="btn btn-secondary" (click)="deletep(product)">x</button>
+          <button class="btn btn-secondary" (click)="deletep(product)" *ngIf="isLoggedIn">x</button>
           <p>
             שם: {{product.name}}
           </p>

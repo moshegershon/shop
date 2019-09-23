@@ -1,9 +1,10 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="nav-link" [routerLink]="['/product']">Products</a>
-    <a class="nav-link" [routerLink]="['/cart']">cart</a>
-    <a  class="nav-link" [routerLink]="['/nproduct']">add a new product</a>
+  <nav  class="navbar navbar-expand-lg navbar-light bg-light">
+    <a  class="nav-link" [routerLink]="['/product']">Products</a>
+    <a  class="nav-link" [routerLink]="['/cart']">cart</a>
+    <a  class="nav-link" [routerLink]="['/nproduct']" *ngIf="isLoggedIn">add a new product</a>
+    <a  class="nav-link" (click)="logout()" id="Login" *ngIf="NotLoggedIn">Login</a>
+    <a  class="nav-link" [routerLink]="['/register']" *ngIf="isLoggedIn">Add new admin</a>
     <a  class="nav-link" (click)="logout()" id="logout" *ngIf="isLoggedIn">Logout</a>
-    <a  class="nav-link" (click)="logout()">Login</a>
   </nav>
 </header>

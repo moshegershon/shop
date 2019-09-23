@@ -3,6 +3,7 @@ import {Product} from 'src/app/models/product';
 import {CartService} from 'src/app/services/cart.service';
 import {ProductService} from 'src/app/services/product.service';
 import {Cart} from 'src/app/models/cart';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-product',
@@ -16,6 +17,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private productService: ProductService,
+    private userService: UserService
   ) {
   }
 
@@ -50,5 +52,9 @@ export class ProductComponent implements OnInit {
       console.log(res);
       this.products = res;
     });
+  }
+
+  get isLoggedIn(): boolean {
+    return !!this.userService.currentUserValue;
   }
 }
