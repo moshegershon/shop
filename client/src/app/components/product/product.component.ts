@@ -1,8 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Product} from 'src/app/models/product';
-import {CartService} from 'src/app/services/cart.service';
-import {ProductService} from 'src/app/services/product.service';
-import {Cart} from 'src/app/models/cart';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
+import { Cart } from 'src/app/models/cart';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ProductComponent implements OnInit {
   @Input()
   products: Product[];
+  ;
 
   constructor(
     private cartService: CartService,
@@ -25,8 +26,8 @@ export class ProductComponent implements OnInit {
     this.getAllProducts();
   }
 
-  addToCart(product) {
-    console.log(product);
+  addToCart(product,total) {
+    total+=product.price;
     this.cartService.addToCart(product).subscribe((res: Cart) => {
       console.log(res);
       alert('the product ' + product.name + ' was saved in the cart');
@@ -34,17 +35,17 @@ export class ProductComponent implements OnInit {
   }
 
   deletep(product) {
-    if (confirm('are you sure you want to remove this product from your list')){
-    this.productService.deletep(product).subscribe(res => {
-      console.log(res);
-      console.log(product);
-      this.getAllProducts();
-    }, () => {
-      console.log('errr');
-    });
-  }else{
+    if (confirm('are you sure you want to remove this product from your list')) {
+      this.productService.deletep(product).subscribe(res => {
+        console.log(res);
+        console.log(product);
+        this.getAllProducts();
+      }, () => {
+        console.log('errr');
+      });
+    } else {
 
-  }
+    }
   }
 
   getAllProducts() {

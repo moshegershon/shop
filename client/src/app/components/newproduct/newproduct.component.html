@@ -1,17 +1,21 @@
-<form>
-  <div>
-    <label>
-      Name:
-      <input type="text" [(ngModel)]="product.name" name="name" class="form-control" >
-    </label>
-    <label>
-      Category:
-      <input type="text" [(ngModel)]="product.category" name="category" class="form-control">
-    </label>
-    <label>
-      Price:
-      <input type="text" [(ngModel)]="product.price" name="price" class="form-control" >
-    </label>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <form>
+      <div>
+        <label>
+          Name:
+          <input #nameRef type="text" [(ngModel)]="product.name" name="name" class="form-control">
+        </label>
+        <label>
+          Category:
+          <input type="text" [(ngModel)]="product.category" name="category" class="form-control">
+        </label>
+        <label>
+          Price:
+          <input type="text" [(ngModel)]="product.price" name="price" class="form-control">
+        </label>
+      </div>
+      <button (click)="newp()" class="btn btn-primary">Add</button>
+    </form>
   </div>
-  <button (click)="newp()" class="btn btn-primary">Add</button>
-</form>
+</div>

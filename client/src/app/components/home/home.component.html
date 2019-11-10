@@ -5,7 +5,7 @@
   <div>
     <label>
       Name:
-      <input type="text" [(ngModel)]="user.name" name="Name" class="form-control" required>
+      <input #nameRef type="text" [(ngModel)]="user.name" name="Name" class="form-control" required>
     </label>
     <label>
       password:

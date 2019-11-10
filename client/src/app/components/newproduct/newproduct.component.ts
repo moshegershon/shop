@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from 'src/app/models/product';
 
@@ -10,13 +10,15 @@ import { Product } from 'src/app/models/product';
 export class NewproductComponent implements OnInit {
 
   product: Product;
+  @ViewChild ('nameRef') nameElementRef:ElementRef
 
   constructor(private productService: ProductService) {
     this.product = {
       _id: '',
       name: '',
       category: '',
-      price:'',
+      // needs to be a number but stays string
+      price:5,
       id: ''
     };
   }
@@ -24,8 +26,16 @@ export class NewproductComponent implements OnInit {
   ngOnInit() {
   }
   newp() {
-    this.productService.newp(this.product)
-    alert('the product: '+ this.product.name + ' was saved');
+    if(confirm('are you sure you want to save the product '+this.product.name)){
+    this.productService.newp(this.product);
+  }
+  else{
+
+  }
+    
+  }
+  ngAfterViewInit(){
+    this.nameElementRef.nativeElement.focus();
   }
 
 }

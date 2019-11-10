@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {User} from 'src/app/models/user';
 import {UserService} from 'src/app/services/user.service';
 import {Router} from '@angular/router';
@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   user: User;
+  @ViewChild('nameRef') nameElementRf : ElementRef;
 
   constructor(private userService: UserService, private router: Router) {
 
@@ -33,5 +34,8 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login']);
     });
     console.log(this.user);
+  }
+  ngAfterViewInit(){
+    this.nameElementRf.nativeElement.focus();
   }
 }

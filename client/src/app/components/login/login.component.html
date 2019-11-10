@@ -5,7 +5,7 @@
   <div>
     <label>
       Email:
-      <input type="text" [(ngModel)]="user.email" name="email" class="form-control" required>
+      <input #emailRef type="text" [(ngModel)]="user.email" name="email" class="form-control" required>
     </label>
     <label>
       Password

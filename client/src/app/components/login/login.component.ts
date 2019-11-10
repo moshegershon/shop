@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {UserService} from 'src/app/services/user.service';
 import {User} from 'src/app/models/user';
 import {Router} from '@angular/router';
@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user: User;
+  @ViewChild('emailRef') emailElemetRef:ElementRef;
 
   constructor(private userService: UserService, private router: Router) {
     this.user = {
@@ -28,6 +29,9 @@ export class LoginComponent implements OnInit {
       this.user = res;
       this.router.navigate(['/product']);
     });
+  }
+  ngAfterViewInit(){
+    this.emailElemetRef.nativeElement.focus();
   }
 
 }
